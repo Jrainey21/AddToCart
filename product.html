@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="product.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body id="body1">
+    <div class="navs">
+      <div class="navbar-brand">
+        <a id="sneaker" href="">sneakers</a>
+      </div>
+      <a href="" class="toplinks">Collections</a>
+      <a href="" class="toplinks">Men</a>
+      <a href="" class="toplinks">Women</a>
+      <a href="" class="toplinks">About</a>
+      <a href="" class="toplinks">Contact</a>
+      <div class="inline-block float-right">
+        <div id="cartPopUp" class="noShow yes">
+          <h5 id="carth5">Cart <span id="x">X</span></h5>
+
+          <hr />
+          <p id="cartP" class="center">Your cart is empty.</p>
+          <ul id="cartList"></ul>
+        </div>
+
+        <span id="cartTotal">0</span>
+        <img id="cornercart" src="images/icon-cart.svg" alt="" />
+        <img id="avatar" src="images/image-avatar.png" alt="" />
+      </div>
+    </div>
+    <hr class="clearleft" />
+    <section class="down">
+      <div class="row">
+        <div class="col-md-6 featDiv">
+          <img
+            class="left"
+            id="featured"
+            src="images/image-product-1.jpg"
+            alt=""
+          />
+          <div class="thumbnailDiv">
+            <img
+              class="left active thumbnail"
+              src="images/image-product-1-thumbnail.jpg"
+              alt=""
+            />
+            <img
+              class="left thumbnail"
+              src="images/image-product-2-thumbnail.jpg"
+              alt=""
+            />
+            <img
+              class="left thumbnail"
+              src="images/image-product-3-thumbnail.jpg"
+              alt=""
+            />
+            <img
+              class="left thumbnail"
+              src="images/image-product-4-thumbnail.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 productdiv margin down">
+          <h4 class="">SNEAKER COMPANY</h4>
+          <h3 id="h2title">Fall Limited Edition Sneakers</h3>
+          <p>
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they'll withstand everything
+            the weather can offer.
+          </p>
+          <div class="price">
+            <p><b id="bold">$125.00</b> <span id="span">50%</span></p>
+            <p id="originalPrice">$250.00</p>
+          </div>
+          <div class="add-to-cart">
+            <img id="minus" src="images/icon-minus.svg" />
+            <span id="items"> 0</span>
+            <img id="plus" src="images/icon-plus.svg" />
+            <button id="buttoncart">
+              <img src="images/icon-cart.svg" /> Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="bootstrap.js"></script>
+    <script type="text/javascript">
+      var totalNumbers = 0;
+      const minus = document.getElementById("minus");
+      const plus = document.getElementById("plus");
+      const items = document.getElementById("items");
+      const cartSpan = document.getElementById("cartTotal");
+      const addToCart = document.getElementById("buttoncart");
+      let thumbnails = document.getElementsByClassName("thumbnail");
+      let activeImages = document.getElementsByClassName("active");
+      const cornercart = document.getElementById("cornercart");
+      const cartPopUp = document.getElementById("cartPopUp");
+      const x = document.getElementById("x");
+      const body = document.getElementById("body1");
+      const cartList = document.getElementById("cartList");
+      const cartP = document.getElementById("cartP");
+      const allDiv = document.querySelectorAll("body>div:not(.yes)");
+
+      plus.onclick = function () {
+        totalNumbers++;
+        items.innerHTML = totalNumbers;
+      };
+      minus.onclick = function () {
+        totalNumbers--;
+        if (totalNumbers < 0) {
+          totalNumbers = 0;
+        }
+
+        items.innerHTML = totalNumbers;
+      };
+
+      for (var i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].addEventListener("click", function () {
+          /* Looping through each thumbnail, adding mouseover event listener, if the images with the
+          class of active is more than 0 we will remove active, active class will be added to "this", and
+          "featured src attribute will be changed to "this".src attribute */
+          if (activeImages.length > 0) {
+            activeImages[0].classList.remove("active");
+          }
+          this.classList.add("active");
+          document.getElementById("featured").src = this.src;
+        });
+      }
+
+      addToCart.onclick = function () {
+        cartSpan.innerHTML = items.innerHTML;
+
+        if (cartSpan.innerHTML > 0) {
+          cartP.style.display = "none";
+          if (cartList.childElementCount == 0) {
+            createItem();
+            /* totalNumbers = 0;
+            items.innerHTML = 0; */
+          }
+          if (cartList.childElementCount == 1) {
+            cartList.firstChild.remove();
+            createItem();
+            /* totalNumbers = 0;
+            items.innerHTML = 0; */
+          }
+        }
+      };
+
+      cornercart.onclick = function () {
+        cartPopUp.classList.toggle("show");
+        body.classList.toggle("gray");
+      };
+      x.onclick = function () {
+        cartPopUp.classList.remove("show");
+        body.classList.remove("gray");
+      };
+      const numAdded = document.getElementById("numAdded");
+
+      var cost = 125;
+
+      function createItem() {
+        /*  if (cartList.childElementCount == 0) */
+        var listItem = document.createElement("li");
+
+        listItem.innerHTML =
+          "<p class='listP'> <img src='images/image-product-1-thumbnail.jpg' class='thumbnailSmall float' /> Fall Limited Edition Sneakers <span>$125.00</span><span> * </span><span id='amount' class='orange'></span> </p> <p>TOTAL = <span id='total' class='orange'></span></p><button id='buy'>Buy Now!</button><button id='delete'>Delete</button>";
+        cartList.appendChild(listItem);
+        const total = document.getElementById("total");
+        const amount = document.getElementById("amount");
+        amount.innerHTML = items.innerHTML;
+        total.innerHTML = "$" + cost * items.innerHTML;
+        const deleteButton = document.getElementById("delete");
+        deleteButton.onclick = function () {
+          listItem.remove();
+          cartP.style.display = "block";
+          cartSpan.innerHTML = 0;
+        };
+      }
+    </script>
+  </body>
+</html>
