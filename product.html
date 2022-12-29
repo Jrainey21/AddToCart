@@ -15,88 +15,79 @@
     />
   </head>
   <body id="body1">
-    <div class="navs">
-      <div class="navbar-brand">
-        <a id="sneaker" href="">sneakers</a>
-      </div>
-      <a href="" class="toplinks">Collections</a>
-      <a href="" class="toplinks">Men</a>
-      <a href="" class="toplinks">Women</a>
-      <a href="" class="toplinks">About</a>
-      <a href="" class="toplinks">Contact</a>
-      <div class="inline-block float-right">
-        <div id="cartPopUp" class="noShow yes">
-          <h5 id="carth5">Cart <span id="x">X</span></h5>
-
-          <hr />
-          <p id="cartP" class="center">Your cart is empty.</p>
-          <ul id="cartList"></ul>
-        </div>
-
-        <span id="cartTotal">0</span>
-        <img id="cornercart" src="images/icon-cart.svg" alt="" />
-        <img id="avatar" src="images/image-avatar.png" alt="" />
-      </div>
-    </div>
-    <hr class="clearleft" />
-    <section class="down">
-      <div class="row">
-        <div class="col-md-6 featDiv">
-          <img
-            class="left"
-            id="featured"
-            src="images/image-product-1.jpg"
-            alt=""
-          />
-          <div class="thumbnailDiv">
-            <img
-              class="left active thumbnail"
-              src="images/image-product-1-thumbnail.jpg"
-              alt=""
-            />
-            <img
-              class="left thumbnail"
-              src="images/image-product-2-thumbnail.jpg"
-              alt=""
-            />
-            <img
-              class="left thumbnail"
-              src="images/image-product-3-thumbnail.jpg"
-              alt=""
-            />
-            <img
-              class="left thumbnail"
-              src="images/image-product-4-thumbnail.jpg"
-              alt=""
-            />
+      <div class="navs">
+          <div class="navbar-brand">
+              <a id="sneaker" href="">sneakers</a>
           </div>
-        </div>
-        <div class="col-md-6 productdiv margin down">
-          <h4 class="">SNEAKER COMPANY</h4>
-          <h3 id="h2title">Fall Limited Edition Sneakers</h3>
-          <p>
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
-          </p>
-          <div class="price">
-            <p><b id="bold">$125.00</b> <span id="span">50%</span></p>
-            <p id="originalPrice">$250.00</p>
-          </div>
-          <div class="add-to-cart">
-            <img id="minus" src="images/icon-minus.svg" />
-            <span id="items"> 0</span>
-            <img id="plus" src="images/icon-plus.svg" />
-            <button id="buttoncart">
-              <img src="images/icon-cart.svg" /> Add to cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+          <a href="" class="toplinks">Collections</a>
+          <a href="" class="toplinks">Men</a>
+          <a href="" class="toplinks">Women</a>
+          <a href="" class="toplinks">About</a>
+          <a href="" class="toplinks">Contact</a>
+          <div class="inline-block float-right">
+              <div id="cartPopUp" class="noShow yes">
+                  <h5 id="carth5">Cart <span id="x">X</span></h5>
 
-    <script src="bootstrap.js"></script>
-    <script type="text/javascript">
+                  <hr />
+                  <p id="cartP" class="center">Your cart is empty.</p>
+                  <ul id="cartList"></ul>
+              </div>
+
+              <span id="cartTotal">0</span>
+              <img id="cornercart" src="images/icon-cart.svg" alt="" />
+              <img id="avatar" src="images/image-avatar.png" alt="" />
+          </div>
+      </div>
+      <hr class="clearleft" />
+      <section class="down">
+          <div class="row">
+              <div class="col-md-6 featDiv">
+                  <img class="left"
+                       id="featured"
+                       src="images/image-product-1.jpg"
+                       alt="" />
+                  <div class="thumbnailDiv">
+                      <img class="left active thumbnail"
+                           src="images/image-product-1-thumbnail.jpg"
+                           alt="" />
+                      <img class="left thumbnail"
+                           src="images/image-product-2-thumbnail.jpg"
+                           alt="" />
+                      <img class="left thumbnail"
+                           src="images/image-product-3-thumbnail.jpg"
+                           alt="" />
+                      <img class="left thumbnail"
+                           src="images/image-product-4-thumbnail.jpg"
+                           alt="" />
+                  </div>
+              </div>
+              <div class="col-md-6 productdiv margin down">
+                  <h4 class="">SNEAKER COMPANY</h4>
+                  <h3 id="h2title">Fall Limited Edition Sneakers</h3>
+                  <p>
+                      These low-profile sneakers are your perfect casual wear companion.
+                      Featuring a durable rubber outer sole, they'll withstand everything
+                      the weather can offer.
+                  </p>
+                  <div class="price">
+                      <p><b id="bold">$125.00</b> <span id="span">50%</span></p>
+                      <p id="originalPrice">$250.00</p>
+                  </div>
+                  <div class="add-to-cart">
+                      <img id="minus" src="images/icon-minus.svg" />
+                      <span id="items"> 0</span>
+                      <img id="plus" src="images/icon-plus.svg" />
+                      <button id="buttoncart">
+                          <img src="images/icon-cart.svg" /> Add to cart
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <script src="bootstrap.js"></script>
+      <script src="addToCart.js"></script>
+      <!--<script type="text/javascript">
       var totalNumbers = 0;
       const minus = document.getElementById("minus");
       const plus = document.getElementById("plus");
@@ -188,6 +179,6 @@
           cartSpan.innerHTML = 0;
         };
       }
-    </script>
+    </script>-->
   </body>
 </html>
