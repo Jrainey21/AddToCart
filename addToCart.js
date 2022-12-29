@@ -6,24 +6,20 @@ const cartSpan = document.getElementById("cartTotal");
 const addToCart = document.getElementById("buttoncart");
 let thumbnails = document.getElementsByClassName("thumbnail");
 let activeImages = document.getElementsByClassName("active");
-const cornercart = document.getElementById("cornercart");
+const cartIcon = document.getElementById("cartIcon");
 const cartPopUp = document.getElementById("cartPopUp");
 const x = document.getElementById("x");
 const body = document.getElementById("body1");
 const cartList = document.getElementById("cartList");
 const cartP = document.getElementById("cartP");
 const allDiv = document.querySelectorAll("body>div:not(.yes)");
+var cost = 125;
 
-//plus.onclick = function () {
-//    totalNumbers++;
-//    items.innerHTML = totalNumbers;
-//};
 function addNumber() {
     const items = document.getElementById("items");
     totalNumbers++;
     items.innerHTML = totalNumbers;
 }
-plus.addEventListener("click", addNumber);
 
 function subtractNumber() {
     const items = document.getElementById("items");
@@ -34,30 +30,28 @@ function subtractNumber() {
 
     items.innerHTML = totalNumbers;
 }
-minus.addEventListener("click", subtractNumber);
-//minus.onclick = function () {
-//    totalNumbers--;
-//    if (totalNumbers < 0) {
-//        totalNumbers = 0;
-//    }
 
-//    items.innerHTML = totalNumbers;
-//};
+//        /* highlightShoeThumbNail-- Looping through each thumbnail, adding mouseover event listener, if the images with the
+//        class of active is more than 0 we will remove active, active class will be added to "this", and
+//        "featured src attribute will be changed to "this".src attribute */
 
-for (var i = 0; i < thumbnails.length; i++) {
-    thumbnails[i].addEventListener("click", function () {
-        /* Looping through each thumbnail, adding mouseover event listener, if the images with the
-        class of active is more than 0 we will remove active, active class will be added to "this", and
-        "featured src attribute will be changed to "this".src attribute */
-        if (activeImages.length > 0) {
-            activeImages[0].classList.remove("active");
-        }
-        this.classList.add("active");
-        document.getElementById("featured").src = this.src;
-    });
+function highlightShoeThumbNail() {
+    let activeImages = document.getElementsByClassName("active");
+    if (activeImages.length > 0) {
+        activeImages[0].classList.remove("active");
+    }
+    this.classList.add("active");
+    document.getElementById("featured").src = this.src;
 }
 
-addToCart.onclick = function () {
+for (var i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].addEventListener("click", highlightShoeThumbNail)
+}
+
+function addingToCart() {
+    const cartSpan = document.getElementById("cartTotal");
+    const cartP = document.getElementById("cartP");
+    const cartList = document.getElementById("cartList");
     cartSpan.innerHTML = items.innerHTML;
 
     if (cartSpan.innerHTML > 0) {
@@ -74,19 +68,19 @@ addToCart.onclick = function () {
             items.innerHTML = 0; */
         }
     }
-};
+}
 
-cornercart.onclick = function () {
+function makeCartPopUp() {
+    const cartPopUp = document.getElementById("cartPopUp");
     cartPopUp.classList.toggle("show");
     body.classList.toggle("gray");
-};
-x.onclick = function () {
+}
+
+function closeCart() {
+    const cartPopUp = document.getElementById("cartPopUp");
     cartPopUp.classList.remove("show");
     body.classList.remove("gray");
-};
-const numAdded = document.getElementById("numAdded");
-
-var cost = 125;
+}
 
 function createItem() {
     /*  if (cartList.childElementCount == 0) */
@@ -106,3 +100,9 @@ function createItem() {
         cartSpan.innerHTML = 0;
     };
 }
+
+plus.addEventListener("click", addNumber);
+minus.addEventListener("click", subtractNumber);
+addToCart.addEventListener("click",addingToCart)
+cartIcon.addEventListener("click", makeCartPopUp);
+x.addEventListener("click", closeCart);
