@@ -1,18 +1,20 @@
 var totalNumbers = 0;
+/*--Added click listener events to variables below at the bottom of js page.  */
 const minus = document.getElementById("minus");
 const plus = document.getElementById("plus");
+const addToCart = document.getElementById("buttoncart");
+const cartIcon = document.getElementById("cartIcon");
+const x = document.getElementById("x");
+/*--Added click listener events to variables above at the bottom of js page.  */
+
 const items = document.getElementById("items");
 const cartSpan = document.getElementById("cartTotal");
-const addToCart = document.getElementById("buttoncart");
 let thumbnails = document.getElementsByClassName("thumbnail");
 let activeImages = document.getElementsByClassName("active");
-const cartIcon = document.getElementById("cartIcon");
 const cartPopUp = document.getElementById("cartPopUp");
-const x = document.getElementById("x");
 const body = document.getElementById("body1");
 const cartList = document.getElementById("cartList");
 const cartP = document.getElementById("cartP");
-const allDiv = document.querySelectorAll("body>div:not(.yes)");
 var cost = 125;
 
 function addNumber() {
@@ -27,7 +29,6 @@ function subtractNumber() {
     if (totalNumbers < 0) {
         totalNumbers = 0;
     }
-
     items.innerHTML = totalNumbers;
 }
 
@@ -53,7 +54,6 @@ function addingToCart() {
     const cartP = document.getElementById("cartP");
     const cartList = document.getElementById("cartList");
     cartSpan.innerHTML = items.innerHTML;
-
     if (cartSpan.innerHTML > 0) {
         cartP.style.display = "none";
         if (cartList.childElementCount == 0) {
@@ -85,7 +85,6 @@ function closeCart() {
 function createItem() {
     /*  if (cartList.childElementCount == 0) */
     var listItem = document.createElement("li");
-
     listItem.innerHTML =
         "<p class='listP'> <img src='images/image-product-1-thumbnail.jpg' class='thumbnailSmall float' /> Fall Limited Edition Sneakers <span>$125.00</span><span> * </span><span id='amount' class='orange'></span> </p> <p>TOTAL = <span id='total' class='orange'></span></p><button id='buy'>Buy Now!</button><button id='delete'>Delete</button>";
     cartList.appendChild(listItem);
@@ -106,3 +105,4 @@ minus.addEventListener("click", subtractNumber);
 addToCart.addEventListener("click",addingToCart)
 cartIcon.addEventListener("click", makeCartPopUp);
 x.addEventListener("click", closeCart);
+
